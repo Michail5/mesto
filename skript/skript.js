@@ -7,10 +7,10 @@ let closeButton = document.querySelector('.popup__close-button');
 let profileTitle = document.querySelector('.profile__title');
 let profileSubtitle = document.querySelector('.profile__subtitle');
 
-let popupOpen = () => {
+let popupOpen = () => {//добавить
   popup.classList.add('popup_opened');
 }
-let popupClose = () => {
+let popupClose = () => {//удалит
   popup.classList.remove('popup_opened');
 }
 let formSubmitHandler = evt => {
