@@ -99,7 +99,7 @@ const closePopupImage = () => {
 }
 
 editFormElement.addEventListener('submit', editFormSubmitHandler);
-closeEditPopupButton.addEventListener('click', closePopup(popupEdit));
+closeEditPopupButton.addEventListener('click', closePopupEdit);
 editButton.addEventListener('click', editProfile);
 addFormElement.addEventListener('submit', addFormSubmitHandler);
 closeAddPopupButton.addEventListener('click', closePopupAdd);
