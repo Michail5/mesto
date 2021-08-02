@@ -19,7 +19,6 @@ const popupImageImage = popupImage.querySelector('.popup-image__image');
 const popupImageCaption = popupImage.querySelector('.popup-image__caption');
 const elementTemplate = document.querySelector('#element-template').content;
 const popuAddFrom = document.querySelector('.popup-add__form');
-const formElement = document.querySelector('.popup__close-button');
 
 const removeElement = (evt) => {
   evt.target.closest('.element').remove();
@@ -60,8 +59,6 @@ const openPopup = (popup) => {
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
 }
-
-
 const openPopupEdit = () => {
   openPopup(popupEdit);
 }
@@ -108,6 +105,3 @@ addFormElement.addEventListener('submit', addFormSubmitHandler);
 closeAddPopupButton.addEventListener('click', closePopupAdd);
 addButton.addEventListener('click', addElement);
 popupImageCloseButton.addEventListener('click', closePopupImage);
-
- 
- 
