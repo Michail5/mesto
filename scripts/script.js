@@ -1,22 +1,22 @@
-const editFormElement = document.querySelector('.popup-edit__form');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_about');
-const editButton = document.querySelector('.profile__edit-button');
-const popupEdit = document.querySelector('.popup-edit');
-const closeEditPopupButton = document.querySelector('.popup-edit__close-button');
-const profileTitle = document.querySelector('.profile__title');
-const profileSubtitle = document.querySelector('.profile__subtitle');
-const elements = document.querySelector('.elements');
-const popupAdd = document.querySelector('.popup-add');
+const editFormElement = document.querySelector('.popup-edit__formm'); 
+const nameInput = document.querySelector('.popup__input_type_name'); 
+const jobInput = document.querySelector('.popup__input_type_about'); 
+const editButton = document.querySelector('.profile__edit-button'); 
+const popupEdit = document.querySelector('.popup_type_edit'); 
+const closeEditPopupButton = document.querySelector('.popup_edit__close-button'); 
+const profileTitle = document.querySelector('.profile__title'); 
+const profileSubtitle = document.querySelector('.profile__subtitle'); 
+const elements = document.querySelector('.elements'); 
+const popupAdd = document.querySelector('.popup_type_add'); 
 const addButton = document.querySelector('.profile__add-button');
-const closeAddPopupButton = document.querySelector('.popup-add__close-button');
-const addFormElement = document.querySelector('.popup-add__form');
+const closeAddPopupButton = document.querySelector('.popup_add__close-button'); 
+const addFormElement = document.querySelector('.popup-add__form'); 
 const titleInput = document.querySelector('.popup__input_type_title');
-const linkInput = document.querySelector('.popup__input_type_link');
-const popupImage = document.querySelector('.popup-image');
-const popupImageCloseButton = document.querySelector('.popup-image__close-button');
-const popupImageImage = popupImage.querySelector('.popup-image__image');
-const popupImageCaption = popupImage.querySelector('.popup-image__caption');
+const linkInput = document.querySelector('.popup__input_type_link'); 
+const popupImage = document.querySelector('.popup_type_image');
+const popupImageCloseButton = document.querySelector('.popup_image__close-button');
+const popupImageElement = popupImage.querySelector('.popup__image'); 
+const popupImageCaption = popupImage.querySelector('.popup__caption');
 const elementTemplate = document.querySelector('#element-template').content;
 const popuAddFrom = document.querySelector('.popup-add__form');
 
@@ -43,9 +43,9 @@ const createElement = card => {
   elementImage.addEventListener('click', function() {
     openPopupImage();
 
-    popupImageImage.src = card.link;
+    popupImageElement.src = card.link;
     popupImageCaption.textContent = card.name;
-    popupImageImage.alt = card.name;
+    popupImageElement.alt = card.name;
   });
 
   return element;
@@ -83,7 +83,7 @@ const addElement = () => {
 const closePopupAdd = () => {
   closePopup(popupAdd);
 }
-const addFormSubmitHandler = evt => {
+const handleCardFormSubmit = evt => {
   evt.preventDefault();
   elements.prepend(createElement({link: linkInput.value, name: titleInput.value}));
 
@@ -98,7 +98,7 @@ const closePopupImage = () => {
   closePopup(popupImage);
 }
 
-editFormElement.addEventListener('submit', editFormSubmitHandler);
+editFormElement.addEventListener('submit', aditFormSubmitHandler);
 closeEditPopupButton.addEventListener('click', closePopup(popupEdit));
 editButton.addEventListener('click', editProfile);
 addFormElement.addEventListener('submit', addFormSubmitHandler);
