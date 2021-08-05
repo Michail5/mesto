@@ -1,26 +1,26 @@
-const editFormElement = document.querySelector('.popup-edit__formm'); 
-const nameInput = document.querySelector('.popup__input_type_name'); 
-const jobInput = document.querySelector('.popup__input_type_about'); 
-const editButton = document.querySelector('.profile__edit-button'); 
-const popupEdit = document.querySelector('.popup_type_edit'); 
-const closeEditPopupButton = document.querySelector('.popup_edit__close-button'); 
-const profileTitle = document.querySelector('.profile__title'); 
-const profileSubtitle = document.querySelector('.profile__subtitle'); 
-const elements = document.querySelector('.elements'); 
-const popupAdd = document.querySelector('.popup_type_add'); 
+const editFormElement = document.querySelector('.popup__formm');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_about');
+const editButton = document.querySelector('.profile__edit-button');
+const popupEdit = document.querySelector('.popup_type_edit');
+const closeEditPopupButton = document.querySelector('.popup__close-button_type_edit');
+const profileTitle = document.querySelector('.profile__title');
+const profileSubtitle = document.querySelector('.profile__subtitle');
+const elements = document.querySelector('.elements');
+const popupAdd = document.querySelector('.popup_type_add');
 const addButton = document.querySelector('.profile__add-button');
-const closeAddPopupButton = document.querySelector('.popup_add__close-button'); 
-const addFormElement = document.querySelector('.popup-add__form'); 
+const closeAddPopupButton = document.querySelector('.popup__close-button_type_add');
+const addFormElement = document.querySelector('.popup__form');
 const titleInput = document.querySelector('.popup__input_type_title');
-const linkInput = document.querySelector('.popup__input_type_link'); 
+const linkInput = document.querySelector('.popup__input_type_link');
 const popupImage = document.querySelector('.popup_type_image');
-const popupImageCloseButton = document.querySelector('.popup_image__close-button');
-const popupImageElement = popupImage.querySelector('.popup__image'); 
+const popupImageCloseButton = document.querySelector('.popup__close-button_type_image');
+const popupImageElement = popupImage.querySelector('.popup__image');
 const popupImageCaption = popupImage.querySelector('.popup__caption');
 const elementTemplate = document.querySelector('#element-template').content;
-const popuAddFrom = document.querySelector('.popup-add__form');
+const popuAddFrom = document.querySelector('.popup__form');
 
-const removeElement = (evt) => {
+const handleDeleteElement = (evt) => {
   evt.target.closest('.element').remove();
 }
 const togglelike = (evt) => {
@@ -37,7 +37,7 @@ const createElement = card => {
   elementImage.src = card.link;
   elementImage.alt = card.name;
 
-  removeButton.addEventListener('click', removeElement);
+  removeButton.addEventListener('click', handleDeleteElement);
   likeButton.addEventListener('click', togglelike);
 
   elementImage.addEventListener('click', function() {
@@ -70,7 +70,7 @@ const editProfile = () => {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
 }
-const editFormSubmitHandler = evt => {
+const handleProfileFormSubmit = evt => {
     evt.preventDefault();
     profileTitle.textContent = nameInput.value;
     profileSubtitle.textContent = jobInput.value;
@@ -98,12 +98,10 @@ const closePopupImage = () => {
   closePopup(popupImage);
 }
 
-editFormElement.addEventListener('submit', aditFormSubmitHandler);
-closeEditPopupButton.addEventListener('click', closePopup(popupEdit));
+editFormElement.addEventListener('submit', handleProfileFormSubmit);
+closeEditPopupButton.addEventListener('click', closePopupEdit);
 editButton.addEventListener('click', editProfile);
-addFormElement.addEventListener('submit', addFormSubmitHandler);
+addFormElement.addEventListener('submit', handleCardFormSubmit);
 closeAddPopupButton.addEventListener('click', closePopupAdd);
 addButton.addEventListener('click', addElement);
 popupImageCloseButton.addEventListener('click', closePopupImage);
-
- 
