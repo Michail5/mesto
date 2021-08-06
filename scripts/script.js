@@ -23,7 +23,7 @@ const popuAddFrom = document.querySelector('.popup__form');
 const handleDeleteElement = (evt) => {
   evt.target.closest('.element').remove();
 }
-const togglelike = (evt) => {
+const camelCase = (evt) => {
   evt.target.classList.toggle('element__like-button_active');
 }
 const createElement = card => {
@@ -38,7 +38,7 @@ const createElement = card => {
   elementImage.alt = card.name;
 
   removeButton.addEventListener('click', handleDeleteElement);
-  likeButton.addEventListener('click', togglelike);
+  likeButton.addEventListener('click', camelCase);
 
   elementImage.addEventListener('click', function() {
     openPopupImage();
