@@ -1,8 +1,8 @@
   
 export class Card {
-  constructor(vupsen, template) {
+  constructor(vupsen, pupsen) {
     this._vupsen = vupsen;
-    this._template = template;
+    this._pupsen = pupsen;
   }
 
 
@@ -19,7 +19,7 @@ export class Card {
   }
 
   _getTemplate() {
-    this._element = this._template.querySelector('.element').cloneNode(true);
+    this._element = this._pupsen.querySelector('.element').cloneNode(true);
     this._elementImage = this._element.querySelector('.element__image');
     this._elementTitle = this._element.querySelector('.element__title');
     this._removeButton = this._element.querySelector('.element__remove-button');
