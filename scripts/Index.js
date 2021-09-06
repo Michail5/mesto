@@ -1,4 +1,6 @@
-import {Card} from './Cards.js';
+'use strict';
+import { Card } from './Cards.js';
+import{initialCards} from './initialCards.js';
 
 const editFormElement = document.querySelector('.popup-edit__form');
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -23,7 +25,6 @@ const elementTemplate = document.querySelector('#element-template').content;
 const popupAddForm = document.querySelector('.popup-add__form');
 const popups = document.querySelectorAll('.popup');
 
-
 initialCards.forEach(function(item) {
   const card = new Card(item, elementTemplate);
   const cardElement = card.generateCard();
@@ -36,6 +37,48 @@ const closeByEsc = (evt) => {
     closePopup(opennedPopup);
   }
 }
+const removeElement = (evt) => {
+  evt.target.closest('.element').remove();
+}
+const togglelike = (evt) => {
+  evt.target.classList.toggle('element__like-button_active');
+}
+ const createElement = card => {
+   const element = elementTemplate.querySelector('.element').cloneNode(true);
+   const elementImage = element.querySelector('.element__image');
+   const elementTitle = element.querySelector('.element__title');
+   const removeButton = element.querySelector('.element__remove-button');
+   const likeButton = element.querySelector('.element__like-button');
+
+   elementTitle.textContent = card.name;
+   elementImage.src = card.link;
+   elementImage.alt = card.name;
+
+   removeButton.addEventListener('click', removeElement);
+   likeButton.addEventListener('click', togglelike);
+
+   elementImage.addEventListener('click', function() {
+     openPopupImage();
+
+     popupImageImage.src = card.link;
+     popupImageCaption.textContent = card.name;
+    popupImageImage.alt = card.name;
+   });
+
+   return element;
+ };
+
+const createCards = () => {
+  initialCards.map(rowData =>{
+    const card = new Card(rowData, '#element-template');
+    elements.append(card.generateCard());
+  });
+};
+createCards();
+
+ initialCards.forEach(function(item) {
+   elements.append(createElement(item));
+ });
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closeByEsc);
@@ -70,9 +113,7 @@ const closePopupAdd = () => {
 }
 const addFormSubmitHandler = evt => {
   evt.preventDefault();
-  const card = new Card({link: linkInput.value, name: titleInput.value}, elementTemplate);
-  const cardElement = card.generateCard();
-  elements.prepend(cardElement);
+  elements.prepend(createElement({link: linkInput.value, name: titleInput.value}));
 
   popupAddForm.reset();
 

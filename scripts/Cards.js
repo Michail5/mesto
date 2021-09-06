@@ -1,6 +1,7 @@
-class Card {
-  constructor(card, template) {
-    this._card = card;
+  
+export class Card {
+  constructor(vupsen, template) {
+    this._vupsen = vupsen;
     this._template = template;
   }
 
@@ -10,9 +11,9 @@ class Card {
     this._getTemplate();
     this._setEventListeners();
 
-    this._elementTitle.textContent = this._card.name;
-    this._elementImage.src = this._card.link;
-    this._elementImage.alt = this._card.name;
+    this._elementTitle.textContent = this._vupsen.name;
+    this._elementImage.src = this._vupsen.link;
+    this._elementImage.alt = this._vupsen.name;
 
     return this._element;
   }
@@ -32,9 +33,9 @@ class Card {
     this._elementImage.addEventListener('click', function() {
       openPopupImage();
 
-      popupImageImage.src = this._card.link;
-      popupImageCaption.textContent = this._card.name;
-      popupImageImage.alt = this._card.name;
+      popupImageImage.src = this._vupsen.link;
+      popupImageCaption.textContent = this._vupsen.name;
+      popupImageImage.alt = this._vupsen.name;
     });
   }
 
@@ -47,4 +48,3 @@ class Card {
   }
 };
 
-export {Card};
