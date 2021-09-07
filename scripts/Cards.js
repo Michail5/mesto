@@ -1,43 +1,46 @@
-  
 export class Card {
-  constructor(vupsen, pupsen) {
-    this._vupsen = vupsen;
-    this._pupsen = pupsen;
+  constructor(kard, sicirs, onkard) {
+    this._kard = kard;
+    this._sicirs = sicirs;
+    this._onkard = onkard;
   }
 
 
 
   generateCard() {
     this._getTemplate();
+
+    this._element = this._getTemplate();
+    this._elementImage = this._element.querySelector('.element__image');
+    this._elementTitle = this._element.querySelector('.element__title');
+    this._removeButton = this._element.querySelector('.element__remove-button');
+    this._likeButton = this._element.querySelector('.element__like-button');
+
     this._setEventListeners();
 
-    this._elementTitle.textContent = this._vupsen.name;
-    this._elementImage.src = this._vupsen.link;
-    this._elementImage.alt = this._vupsen.name;
+    this._elementTitle.textContent = this._kard.name;
+    this._elementImage.src = this._kard.link;
+    this._elementImage.alt = this._kard.name;
 
     return this._element;
   }
 
   _getTemplate() {
-    this._element = this._pupsen.querySelector('.element').cloneNode(true);
-    this._elementImage = this._element.querySelector('.element__image');
-    this._elementTitle = this._element.querySelector('.element__title');
-    this._removeButton = this._element.querySelector('.element__remove-button');
-    this._likeButton = this._element.querySelector('.element__like-button');
+    const cardElement = document
+      .querySelector(this._sicirs)
+      .content
+      .querySelector('.element')
+      .cloneNode(true);
+    return cardElement;
   }
 
   _setEventListeners() {
     this._removeButton.addEventListener('click', this._removeElement);
     this._likeButton.addEventListener('click', this._togglelike);
 
-    this._elementImage.addEventListener('click', function() {
-      openPopupImage();
-
-      popupImageImage.src = this._vupsen.link;
-      popupImageCaption.textContent = this._vupsen.name;
-      popupImageImage.alt = this._vupsen.name;
-    });
+    this._elementImage.addEventListener('click', this._onkard);
   }
+
 
   _removeElement = (evt) => {
     evt.target.closest('.element').remove();
@@ -47,4 +50,3 @@ export class Card {
     evt.target.classList.toggle('element__like-button_active');
   }
 };
-
