@@ -100,5 +100,3 @@ popups.forEach((popup) => {
   });
 });
 
-const formValidator = new FormValidator(selectors);
-formValidator.enableValidation();
