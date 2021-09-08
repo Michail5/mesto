@@ -1,6 +1,7 @@
-import { Card } from './Cards.js';
-import { FormValidator } from './Form.Validator.js';
+import { Card } from './Card.js';
 import { initialCards } from './initialCards.js';
+import { FormValidator } from './camelCase.js';
+import { selectors } from './selectors.js';
 
 const editFormElement = document.querySelector('.popup-edit__form');
 const nameInput = document.querySelector('.popup__input_type_name');
@@ -21,7 +22,6 @@ const popupImageCaption = popupImage.querySelector('.popup-image__caption');
 const popupAddForm = document.querySelector('.popup-add__form');
 const popupEditForm = document.querySelector('.popup-edit__form');
 const popups = document.querySelectorAll('.popup');
-
 
 const closeByEsc = (evt) => {
   const opennedPopup = document.querySelector('.popup_opened');
@@ -47,12 +47,12 @@ const editProfile = () => {
   jobInput.value = profileSubtitle.textContent;
 }
 const editFormSubmitHandler = evt => {
-    evt.preventDefault();
-    profileTitle.textContent = nameInput.value;
-    profileSubtitle.textContent = jobInput.value;
-    closePopupEdit();
+  evt.preventDefault();
+  profileTitle.textContent = nameInput.value;
+  profileSubtitle.textContent = jobInput.value;
+  closePopupEdit();
 
-    popupEditForm.reset();
+  popupEditForm.reset();
 }
 const addElement = () => {
   openPopup(popupAdd);
@@ -64,7 +64,7 @@ const closePopupAdd = () => {
 const addFormSubmitHandler = evt => {
   evt.preventDefault();
 
-  elements.prepend(createCard({link: linkInput.value, name: titleInput.value}));
+  elements.prepend(createCard({ link: linkInput.value, name: titleInput.value }));
 
   popupAddForm.reset();
 
@@ -83,7 +83,7 @@ const createCard = (data) => {
   return new Card(data, '#element-template', onCardClick).generateCard();
 }
 
-initialCards.forEach(function(item) {
+initialCards.forEach(function (item) {
   elements.append(createCard(item));
 });
 
@@ -99,4 +99,5 @@ popups.forEach((popup) => {
     }
   });
 });
-
+const formValidator = new FormValidator(selectors);
+formValidator.enableValidation();
