@@ -13,5 +13,5 @@
   }
   
   .popup__input:first-of-type {
-    margin-bottom: 5px;
+    margin-bottom: 5px; /* Поменял с 30px на 5px, гит изменения почему-то не отображал, но лайы-сервер показывал изменения */
   }
