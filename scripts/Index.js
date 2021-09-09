@@ -1,6 +1,6 @@
 import { Card } from './Card.js';
 import { initialCards } from './initialCards.js';
-import { FormValidator } from './camelCase.js';
+import { FormValidator } from './FormValidator.js';
 import { selectors } from './selectors.js';
 
 const editFormElement = document.querySelector('.popup-edit__form');
