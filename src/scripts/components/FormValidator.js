@@ -15,10 +15,6 @@ export class FormValidator {
     });
   }
 
-//тут у тебя одна ошибка на все классы
-//методы классов должны объявлятся как обычне функции
-//стрелочные не канают, это шибка синтаксическая.
-
   _setEventListeners (formElement) {
     const inputList = Array.from(formElement.querySelectorAll(this._selectors.inputSelector));
     const buttonElement = formElement.querySelector(this._selectors.submitButtonSelector);

@@ -5,6 +5,5 @@ export const selectors = {
     inactiveButtonClass: 'popup__submit-button_inactive',
     inputErrorClass: 'form__input_type_error',
     errorClass: 'form__input-error_active'
-  };  //точки с запятой то забываешь, то ставишь где необязательно
-  // п.с. тут надо :)
+  };  
   

@@ -41,9 +41,7 @@ export class Card {
     this._elementImage.addEventListener('click', this._onCardClick);
   }
 
-//тут у тебя одна ошибка на все классы
-//методы классов должны объявлятся как обычне функции
-//стрелочные не канают, это шибка синтаксическая.
+
   _removeElement (evt) {
     evt.target.closest('.element').remove();
   }
