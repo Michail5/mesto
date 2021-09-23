@@ -3,7 +3,7 @@ export class FormValidator {
     this._selectors = selectors;
   }
 
-  enableValidation = () => {
+  enableValidation () {
     const formList = Array.from(document.querySelectorAll(this._selectors.formSelector));
     formList.forEach((formElement) => {
       formElement.addEventListener('submit', evt => {
@@ -13,9 +13,13 @@ export class FormValidator {
       this._setEventListeners(formElement);
 
     });
-  };
+  }
 
-  _setEventListeners = formElement => {
+//тут у тебя одна ошибка на все классы
+//методы классов должны объявлятся как обычне функции
+//стрелочные не канают, это шибка синтаксическая.
+
+  _setEventListeners (formElement) {
     const inputList = Array.from(formElement.querySelectorAll(this._selectors.inputSelector));
     const buttonElement = formElement.querySelector(this._selectors.submitButtonSelector);
 
@@ -30,16 +34,16 @@ export class FormValidator {
     formElement.addEventListener('reset', () => {
       this._setInitialFormState(formElement, inputList, buttonElement);
     });
-  };
+  }
 
   _setInitialFormState(formElement, inputList, buttonElement) {
     inputList.forEach((inputElement) => {
-      this._hideInputError(formElement, inputElement)
-    })
+      this._hideInputError(formElement, inputElement);
+    });
     this._toggleButtonState(inputList, buttonElement);
   }
 
-  _toggleButtonState = (inputList, buttonElement) => {
+  _toggleButtonState (inputList, buttonElement){
     if (this._hasInvalidInput(inputList)) {
       buttonElement.classList.add(this._selectors.inactiveButtonClass);
       buttonElement.setAttribute('disabled', true);
@@ -49,34 +53,31 @@ export class FormValidator {
     }
   }
 
-  _checkInputValidity = (formElement, inputElement) => {
+  _checkInputValidity(formElement, inputElement){
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
       this._hideInputError(formElement, inputElement);
     }
-  };
+  }
 
-  _hasInvalidInput = inputList => {
+  _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
-  _showInputError = (formElement, inputElement, errorMessage) => {
+  _showInputError (formElement, inputElement, errorMessage) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._selectors.inputErrorClass);
     errorElement.textContent = errorMessage;
     errorElement.classList.add(this._selectors.errorClass);
-  };
+  }
 
-   _hideInputError = (formElement, inputElement) => {
+   _hideInputError (formElement, inputElement) {
     const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._selectors.inputErrorClass);
     errorElement.classList.remove(this._selectors.errorClass);
     errorElement.textContent = '';
-  };
-
-
-
+  }
 }

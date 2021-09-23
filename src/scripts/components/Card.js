@@ -41,12 +41,14 @@ export class Card {
     this._elementImage.addEventListener('click', this._onCardClick);
   }
 
-
-  _removeElement = (evt) => {
+//тут у тебя одна ошибка на все классы
+//методы классов должны объявлятся как обычне функции
+//стрелочные не канают, это шибка синтаксическая.
+  _removeElement (evt) {
     evt.target.closest('.element').remove();
   }
 
-  _toggleLike = (evt) => {
+  _toggleLike(evt) {
     evt.target.classList.toggle('element__like-button_active');
   }
-};
+}
