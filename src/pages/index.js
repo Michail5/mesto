@@ -6,7 +6,7 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import Section from '../scripts/components/Section.js';
 import UserInfo from '../scripts/components/UserInfo.js';
-import { initialCards } from '../scripts/utils/initial-сards.js';
+import { initialCards } from '../scripts/utils/initialCards.js';
 import { selectors } from '../scripts/utils/selectors.js';
 import {
   user,
