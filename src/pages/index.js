@@ -6,9 +6,17 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
 import Section from '../scripts/components/Section.js';
 import UserInfo from '../scripts/components/UserInfo.js';
-import { initialCards } from '../scripts/utils/initialCards.js';
+import { initialCards } from '../scripts/utils/initial-сards.js';
 import { selectors } from '../scripts/utils/selectors.js';
-import {user, nameInput, jobInput, editButton, addButton, popupEditFormSelector, popupAddFormSelector} from '../scripts/utils/constants.js';
+import {
+  user,
+  nameInput,
+  jobInput,
+  editButton,
+  addButton,
+  popupEditFormSelector,
+  popupAddFormSelector,
+} from "../scripts/utils/constants.js";
 
 const userInfo = new UserInfo({nameSelector: user.nameInfo, jobSelector: user.jobInfo});
 const popupWithImage = new PopupWithImage('.popup-image');
@@ -18,7 +26,6 @@ const cardsSection = new Section ({
   items: initialCards,
   renderer: createCard
 }, ".elements");
-
 const popupEditFormValidator = new FormValidator(selectors, popupEditFormSelector);
 
 const popupAddFormValidator = new FormValidator(selectors, popupAddFormSelector);

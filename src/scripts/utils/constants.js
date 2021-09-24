@@ -15,4 +15,4 @@ const popupEditFormSelector = '.popup-edit__form';
 
 const popupAddFormSelector = '.popup-add__form';
 
-export {user, nameInput, jobInput, editButton, addButton, popupEditFormSelector, popupAddFormSelector};  
+export {user, nameInput, jobInput, editButton, addButton, popupEditFormSelector, popupAddFormSelector};
