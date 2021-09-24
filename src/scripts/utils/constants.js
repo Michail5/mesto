@@ -11,4 +11,8 @@ const editButton = document.querySelector('.profile__edit-button');
 
 const addButton = document.querySelector('.profile__add-button');
 
-export {user, nameInput, jobInput, editButton, addButton};  
+const popupEditFormSelector = '.popup-edit__form';
+
+const popupAddFormSelector = '.popup-add__form';
+
+export {user, nameInput, jobInput, editButton, addButton, popupEditFormSelector, popupAddFormSelector};  

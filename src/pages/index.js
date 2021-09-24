@@ -8,7 +8,7 @@ import Section from '../scripts/components/Section.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import { initialCards } from '../scripts/utils/initialCards.js';
 import { selectors } from '../scripts/utils/selectors.js';
-import {user, nameInput, jobInput, editButton, addButton} from '../scripts/utils/constants.js';
+import {user, nameInput, jobInput, editButton, addButton, popupEditFormValidator, popupAddFormValidator} from '../scripts/utils/constants.js';
 
 const userInfo = new UserInfo({nameSelector: user.nameInfo, jobSelector: user.jobInfo});
 const popupWithImage = new PopupWithImage('.popup-image');
@@ -18,7 +18,10 @@ const cardsSection = new Section ({
   items: initialCards,
   renderer: createCard
 }, ".elements");
-const formValidator = new FormValidator(selectors);
+
+const popupEditFormValidator = new FormValidator(selectors, popupEditFormSelector);
+
+const popupAddFormValidator = new FormValidator(selectors, popupAddFormSelector);
 
 function createCard(data) {
   return new Card(data, '#element-template', onCardClick).generateCard();
@@ -36,7 +39,7 @@ function addElement() {
   popupAdd.open();
 }
 function addFormSubmitHandler( {title, link} ) {
-  cardsSection.addItem(createCard( {name: title, link: link, alt: title} ));
+  cardsSection.addItem( {name: title, link: link, alt: title} );
   popupAdd.close();
 }
 function onCardClick(evt) {
@@ -49,7 +52,8 @@ function onCardClick(evt) {
 editButton.addEventListener('click', editProfile);
 addButton.addEventListener('click', addElement);
 
-formValidator.enableValidation();
+popupEditFormValidator.enableValidation();
+popupAddFormValidator.enableValidation();
 cardsSection.renderItems();
 popupAdd.setEventListeners();
 popupEdit.setEventListeners();
