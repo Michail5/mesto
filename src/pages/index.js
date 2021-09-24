@@ -8,7 +8,7 @@ import Section from '../scripts/components/Section.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import { initialCards } from '../scripts/utils/initialCards.js';
 import { selectors } from '../scripts/utils/selectors.js';
-import {user, nameInput, jobInput, editButton, addButton, popupEditFormValidator, popupAddFormValidator} from '../scripts/utils/constants.js';
+import {user, nameInput, jobInput, editButton, addButton, popupEditFormSelector, popupAddFormSelector} from '../scripts/utils/constants.js';
 
 const userInfo = new UserInfo({nameSelector: user.nameInfo, jobSelector: user.jobInfo});
 const popupWithImage = new PopupWithImage('.popup-image');
