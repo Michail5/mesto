@@ -1,10 +1,6 @@
 export class FormValidator {
-  constructor(selectors, formSelector) {
+  constructor(selectors) {
     this._selectors = selectors;
-    this._form = document.querySelector(formSelector);
-    this._inputList = Array.from(this._form.querySelectorAll(this._selectors.inputSelector));
-    this._buttonElement = this._form.querySelector(this._selectors.submitButtonSelector);
-    this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
   }
 
   enableValidation = () => {
@@ -12,61 +8,65 @@ export class FormValidator {
     this._setEventListeners(this._form);
   };
 
-  _setEventListeners = () => {
-    this._toggleButtonState();
+  _setEventListeners (formElement) {
+    const inputList = Array.from(formElement.querySelectorAll(this._selectors.inputSelector));
+    const buttonElement = formElement.querySelector(this._selectors.submitButtonSelector);
+
+    this._toggleButtonState(inputList, buttonElement);
     inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
-        this._checkInputValidity(inputElement);
-        this._toggleButtonState();
+        this._checkInputValidity(formElement, inputElement);
+        this._toggleButtonState(inputList, buttonElement);
       });
     });
 
-    this._form.addEventListener('reset', () => {
-      this._setInitialFormState();
+    formElement.addEventListener('reset', () => {
+      this._setInitialFormState(formElement, inputList, buttonElement);
     });
-  };
+  }
 
-  _setInitialFormState() {
+  _setInitialFormState(formElement, inputList, buttonElement) {
     inputList.forEach((inputElement) => {
-      this._hideInputError(inputElement);
+      this._hideInputError(formElement, inputElement);
     });
-    this._buttonElement.classList.add(this._selectors.inactiveButtonClass);
-    this._buttonElement.setAttribute('disabled', true);
+    this._toggleButtonState(inputList, buttonElement);
   }
 
-  _toggleButtonState = () => {
+  _toggleButtonState (inputList, buttonElement){
     if (this._hasInvalidInput(inputList)) {
-      this._buttonElement.classList.add(this._selectors.inactiveButtonClass);
-      this._buttonElement.setAttribute('disabled', true);
+      buttonElement.classList.add(this._selectors.inactiveButtonClass);
+      buttonElement.setAttribute('disabled', true);
     } else {
-      this._buttonElement.classList.remove(this._selectors.inactiveButtonClass);
-      this._buttonElement.removeAttribute('disabled');
+      buttonElement.classList.remove(this._selectors.inactiveButtonClass);
+      buttonElement.removeAttribute('disabled');
     }
   }
 
-  _checkInputValidity = (inputElement) => {
+  _checkInputValidity(formElement, inputElement){
     if (!inputElement.validity.valid) {
-      this._showInputError(inputElement, inputElement.validationMessage);
+      this._showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
-      this._hideInputError(inputElement);
+      this._hideInputError(formElement, inputElement);
     }
-  };
+  }
 
-  _hasInvalidInput = () => {
-    return this._inputList.some((inputElement) => {
+  _hasInvalidInput(inputList) {
+    return inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   }
 
-  _showInputError = (inputElement, errorMessage) => {
+  _showInputError (formElement, inputElement, errorMessage) {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.add(this._selectors.inputErrorClass);
-    this._errorElement.textContent = errorMessage;
-    this._errorElement.classList.add(this._selectors.errorClass);
-  };
+    errorElement.textContent = errorMessage;
+    errorElement.classList.add(this._selectors.errorClass);
+  }
 
-   _hideInputError = (inputElement) => {
+   _hideInputError (formElement, inputElement) {
+    const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
     inputElement.classList.remove(this._selectors.inputErrorClass);
-    this._errorElement.classList.remove(this._selectors.errorClass);
-    this._errorElement.textContent = '';
-  };
+    errorElement.classList.remove(this._selectors.errorClass);
+    errorElement.textContent = '';
+  }
 }
