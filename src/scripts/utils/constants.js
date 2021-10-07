@@ -18,7 +18,7 @@ const popupAddFormSelector = '.popup-add__form';
 
 const popupAvatarFormSelector = '.popup-avatar__form';
 
-const profileImageContainer = document.querySelector('.profile__image-container');
+const profileImageContainer = document.querySelector('.profile__avatar');
 
 const submitButtons = {
   avatar: document.querySelector('.popup-avatar__submit-button'),

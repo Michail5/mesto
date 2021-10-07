@@ -1,7 +1,7 @@
 export default class Api {
-  constructor(url) {
+  constructor({url, authorizationToken}) {
     this._url = url;
-    this._authorizationToken = '9c2e4842-eec0-466f-b33e-0c19fe7195ce';
+    this._authorizationToken = authorizationToken;
   }
 
   getUserInfo() {

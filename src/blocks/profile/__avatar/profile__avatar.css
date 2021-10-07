@@ -16,6 +16,7 @@
   }
   
   .profile__avatar:hover::after {
+    color: #000;
     opacity: .8;
     background-image: url(../../../images/pencil.svg);
     background-position: center;

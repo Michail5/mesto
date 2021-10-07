@@ -22,7 +22,10 @@ import {
   submitButtons
 } from "../scripts/utils/constants.js";
 
-const api = new Api('https://nomoreparties.co/v1/cohort-28');
+const api = new Api({
+  authorizationToken : '9c2e4842-eec0-466f-b33e-0c19fe7195ce',
+  url : 'https://nomoreparties.co/v1/cohort-28'
+});
 let userId;
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {

@@ -9,7 +9,7 @@ export class FormValidator {
 
   enableValidation = () => {
 
-    this._setEventListeners(this._form);
+    this._setEventListeners();
   };
 
   _setEventListeners = () => {
@@ -31,7 +31,7 @@ export class FormValidator {
       this._errorElement = this._form.querySelector(`.${inputElement.id}-error`);
       this._hideInputError(inputElement);
     });
-    this._buttonElement.classList.add(this._selectors.inactiveButtonClass);
+    this._buttonElement.classList.add(this._selectors.inactiveButtonClass); // разве при смене не ломаюся скрипты //
     this._buttonElement.setAttribute('disabled', true);
   }
 
@@ -66,7 +66,7 @@ export class FormValidator {
     this._errorElement.classList.add(this._selectors.errorClass);
   };
 
-  _hideInputError = (inputElement) => {
+   _hideInputError = (inputElement) => {
     inputElement.classList.remove(this._selectors.inputErrorClass);
     this._errorElement.classList.remove(this._selectors.errorClass);
     this._errorElement.textContent = '';

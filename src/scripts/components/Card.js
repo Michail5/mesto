@@ -26,7 +26,7 @@ export class Card {
     this._elementTitle = this._element.querySelector('.element__title');
     this._removeButton = this._element.querySelector('.element__remove-button');
     this._likeButton = this._element.querySelector('.element__like-button');
-    this._likeCounter = this._element.querySelector('.element__like-counter');
+    this._likeCounter = this._element.querySelector('.element__liike-container');
 
     this._setEventListeners();
 
