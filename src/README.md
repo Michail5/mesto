@@ -6,4 +6,4 @@
 
 Планирую доработать недочеты.
 
-Ссылка проекта на gh-pages: 
+Ссылка проекта на gh-pages: https://michail5.github.io/mesto/
