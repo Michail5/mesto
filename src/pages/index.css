@@ -10,7 +10,7 @@
 @import url(../blocks/header/header.css);
 
 @import url(../blocks/profile/profile.css);
-@import url(../blocks/profile/__avatar/profie__avatar.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__title/profile__title.css);
 @import url(../blocks/profile/__subtitle/profile__subtitle.css);
 @import url(../blocks/profile/__info/profile__info.css);
@@ -43,7 +43,7 @@
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__containers/popup__containers.css);
 
-@import url(../blocks/popup-deleted/__title/popup-deleted__title.css);
+@import url(../blocks/popup-delete/__title/popup-delete__title.css);
 
 @import url(../blocks/popup-image/__container/popup-image__container.css);
 @import url(../blocks/popup-image/__caption/popup-image__caption.css);

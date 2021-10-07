@@ -1,5 +1,6 @@
 .popup__submit-button {
     margin: 0 auto;
+    border: 0;
     background: rgba(0, 0,0, 0.8);
     border-radius: 2px;
     width: 100%;

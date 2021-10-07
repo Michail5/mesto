@@ -3,8 +3,8 @@ import './index.css';
 import { Card } from '../scripts/components/Card.js';
 import { FormValidator } from '../scripts/components/FormValidator.js';
 import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import PopupDell from '../scripts/components/PopupDell.js';
 import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupDelit from '../scripts/components/PopupDelit.js'; 
 import Section from '../scripts/components/Section.js';
 import UserInfo from '../scripts/components/UserInfo.js';
 import Api from '../scripts/components/Api.js';
@@ -21,7 +21,6 @@ import {
   profileImageContainer,
   submitButtons
 } from "../scripts/utils/constants.js";
-
 
 const api = new Api('https://nomoreparties.co/v1/cohort-28');
 let userId;
@@ -42,7 +41,7 @@ const popupWithImage = new PopupWithImage('.popup-image');
 const popupAdd = new PopupWithForm('.popup-add', addFormSubmitHandler);
 const popupEdit = new PopupWithForm('.popup-edit', editFormSubmitHandler);
 const popupAvatar = new PopupWithForm('.popup-avatar', avatarFormSubmitHandler);
-const popupDelete = new PopupDell('.popup-deleted', deleteFormSubmitHandler);
+const popupDelete = new PopupDelit('.popup-delete', deleteFormSubmitHandler);
 const popupEditFormValidator = new FormValidator(selectors, popupEditFormSelector);
 const popupAddFormValidator = new FormValidator(selectors, popupAddFormSelector);
 const popupAvatarFormValidator = new FormValidator(selectors, popupAvatarFormSelector);
@@ -76,7 +75,7 @@ function editFormSubmitHandler({name, about}) {
     })
     .catch((err) => {
       console.log(err);
-      
+
       return [];
     })
     .finally(() => {
